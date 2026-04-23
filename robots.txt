@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /*.json$
+
+Sitemap: https://quintanaruiz.com.ar/sitemap.xml
