@@ -166,11 +166,6 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
 }
 .site-nav a:hover { color: var(--color-primary); }
 .site-nav a.active { color: var(--color-primary); }
-.site-nav a.active::after {
-  content: '';
-  position: absolute; left: 0; right: 0; bottom: -4px;
-  height: 2px; background: var(--color-primary); border-radius: 2px;
-}
 
 /* Dropdown */
 .has-dropdown { position: relative; }
@@ -224,19 +219,17 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
   overflow: hidden;
 }
 
-/* ---------- Hero Photo (variant C – home) ---------- */
+/* ---------- Hero Photo (variant C – home + landings) ---------- */
 .hero.hero-photo {
   padding: clamp(28px, 4vw, 56px) 0 clamp(72px, 9vw, 120px);
   background:
     linear-gradient(135deg, rgba(15, 26, 61, 0.92) 0%, rgba(30, 91, 191, 0.78) 100%),
-    url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&auto=format&fit=crop') center / cover no-repeat;
+    var(--bg-image, url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&auto=format&fit=crop')) center / cover no-repeat;
   color: #fff;
 }
 .hero.hero-photo h1 { color: #fff; }
 .hero.hero-photo h1 span {
   color: #FFB800;
-  border-bottom: 4px solid #FFB800;
-  padding-bottom: 4px;
 }
 .hero.hero-photo .text-lead { color: rgba(255, 255, 255, 0.88); }
 .hero.hero-photo .hero-badge {
@@ -725,6 +718,19 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
 .page-header .breadcrumbs a { color: var(--color-primary); }
 .page-header h1 { margin-bottom: 16px; }
 .page-header p { font-size: 1.1rem; max-width: 720px; margin: 0 auto; }
+
+/* Page header with photo background (variant) */
+.page-header.page-header-photo {
+  background:
+    linear-gradient(135deg, rgba(15, 26, 61, 0.86) 0%, rgba(30, 91, 191, 0.74) 100%),
+    var(--bg-image, none) center / cover no-repeat;
+  color: #fff;
+  position: relative;
+}
+.page-header.page-header-photo h1 { color: #fff; }
+.page-header.page-header-photo p { color: rgba(255, 255, 255, 0.90); }
+.page-header.page-header-photo .breadcrumbs { color: rgba(255, 255, 255, 0.72); }
+.page-header.page-header-photo .breadcrumbs a { color: #FFB800; }
 
 /* ---------- Two-column content section ---------- */
 .split {
