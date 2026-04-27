@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Foto pendiente">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EEF2F8"/>
+      <stop offset="1" stop-color="#DCE3EF"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)"/>
+  <!-- Cabeza -->
+  <circle cx="100" cy="78" r="30" fill="#9FB0C9"/>
+  <!-- Cuerpo / hombros -->
+  <path d="M 38 200 Q 38 130 100 130 Q 162 130 162 200 Z" fill="#9FB0C9"/>
+</svg>
