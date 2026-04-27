@@ -1,14 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-label="Quintana Ruiz Asesores de Seguros">
-  <g>
-    <!-- Q -->
-    <circle cx="38" cy="32" r="22" fill="none" stroke="#1E5BBF" stroke-width="10"/>
-    <rect x="48" y="44" width="14" height="18" rx="3" fill="#1E5BBF" transform="rotate(40 55 53)"/>
-    <!-- R -->
-    <path d="M 72 10 L 72 55 M 72 10 L 90 10 C 100 10 106 17 106 24 C 106 31 100 38 90 38 L 72 38 M 88 38 L 106 55"
-          stroke="#1A2556" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" role="img" aria-label="Quintana Ruiz Asesores de Seguros">
+  <!-- QR monogram (centered top) -->
+  <g transform="translate(170, 10)">
+    <!-- Q: bright blue outline circle -->
+    <circle cx="50" cy="55" r="40" fill="none" stroke="#1E5BBF" stroke-width="16" stroke-linecap="round"/>
+    <!-- Q: stem extending down-right -->
+    <rect x="60" y="80" width="14" height="32" rx="6" fill="#1E5BBF" transform="rotate(35 67 96)"/>
+    <!-- R: navy thick R, overlapping the Q on the right -->
+    <path d="M 96 15 L 96 105
+             M 96 15 L 124 15
+             C 138 15 145 25 145 38
+             C 145 51 138 60 124 60
+             L 96 60
+             M 124 60 L 145 105"
+          stroke="#1A2556"
+          stroke-width="16"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
   </g>
-  <g font-family="Poppins, system-ui, sans-serif">
-    <text x="0" y="92" font-size="26" font-weight="800" fill="#1A2556" letter-spacing="1">QUINTANA RUIZ</text>
-    <text x="8" y="112" font-size="11" font-weight="500" fill="#8B93A7" letter-spacing="3">ASESORES de SEGUROS</text>
+  <!-- Text -->
+  <g font-family="Poppins, system-ui, -apple-system, sans-serif">
+    <text x="240" y="200" text-anchor="middle" font-size="44" font-weight="800" fill="#1A2556" letter-spacing="-0.5">QUINTANA RUIZ</text>
+    <text x="240" y="232" text-anchor="middle" font-size="16" font-weight="500" fill="#8B93A7" letter-spacing="3.5">ASESORES de SEGUROS</text>
   </g>
 </svg>

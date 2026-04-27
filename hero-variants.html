@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero variants — Quintana Ruiz</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .variant-tag {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #0f172a;
+      color: #fff;
+      padding: 14px 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid #334155;
+    }
+    .variant-tag .badge { background: #FFB800; color: #0f172a; padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; }
+    .variant-tag .desc { color: #cbd5e1; font-weight: 400; font-size: 0.85rem; margin-left: auto; }
+
+    /* ============== V1: NAVY GRADIENT ============== */
+    .hero.v1 {
+      background:
+        radial-gradient(60% 80% at 80% 20%, rgba(255, 184, 0, 0.10), transparent 60%),
+        radial-gradient(50% 60% at 10% 100%, rgba(30, 91, 191, 0.45), transparent 60%),
+        linear-gradient(135deg, #0F1A3D 0%, #1A2556 50%, #1E5BBF 100%);
+      color: #fff;
+    }
+    .hero.v1::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+      mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 80%);
+    }
+    .hero.v1 h1 { color: #fff; }
+    .hero.v1 h1 span { color: #FFB800; }
+    .hero.v1 .text-lead { color: rgba(255,255,255,0.82); }
+    .hero.v1 .hero-badge { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.92); backdrop-filter: blur(8px); }
+    .hero.v1 .hero-badge strong { color: #fff; }
+    .hero.v1 .hero-trust { border-top-color: rgba(255,255,255,0.15); }
+    .hero.v1 .hero-trust .trust-item strong { color: #fff; }
+    .hero.v1 .hero-trust .trust-item span { color: rgba(255,255,255,0.65); }
+    .hero.v1 .btn-outline { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.25); }
+    .hero.v1 .btn-outline:hover { border-color: #fff; }
+    .hero.v1 .floating-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.4); }
+
+    /* ============== V2: GEOMETRIC SHAPES (light + colorful) ============== */
+    .hero.v2 {
+      background: linear-gradient(180deg, #F5F8FD 0%, #ffffff 100%);
+      overflow: hidden;
+    }
+    .hero.v2::before {
+      content: '';
+      position: absolute;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      top: -150px; right: -150px;
+      background: linear-gradient(135deg, #1E5BBF, #1A2556);
+      opacity: 0.10;
+      z-index: 0;
+    }
+    .hero.v2::after {
+      content: '';
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      bottom: -100px; left: -120px;
+      background: linear-gradient(135deg, #FFB800, #FF8A00);
+      opacity: 0.13;
+      z-index: 0;
+    }
+    .hero.v2 .container { position: relative; z-index: 2; }
+    .hero.v2 .deco-grid {
+      position: absolute;
+      top: 50%; left: 5%;
+      width: 120px; height: 120px;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(30, 91, 191, 0.35) 1.5px, transparent 0);
+      background-size: 18px 18px;
+      transform: translateY(-50%);
+      z-index: 1;
+      opacity: 0.6;
+    }
+    .hero.v2 .deco-blob {
+      position: absolute;
+      width: 220px; height: 220px;
+      border-radius: 50% 60% 70% 40% / 50% 40% 60% 50%;
+      bottom: 15%; right: 5%;
+      background: linear-gradient(135deg, rgba(30, 91, 191, 0.15), rgba(255, 184, 0, 0.18));
+      filter: blur(2px);
+      animation: blob 12s ease-in-out infinite;
+      z-index: 1;
+    }
+    @keyframes blob {
+      0%, 100% { border-radius: 50% 60% 70% 40% / 50% 40% 60% 50%; }
+      50% { border-radius: 60% 40% 50% 70% / 60% 50% 40% 50%; }
+    }
+
+    /* ============== V3: IMAGE BACKGROUND + OVERLAY ============== */
+    .hero.v3 {
+      background:
+        linear-gradient(135deg, rgba(15, 26, 61, 0.92) 0%, rgba(30, 91, 191, 0.78) 100%),
+        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&auto=format&fit=crop') center / cover no-repeat;
+      color: #fff;
+    }
+    .hero.v3 h1 { color: #fff; }
+    .hero.v3 h1 span { color: #FFB800; border-bottom: 4px solid #FFB800; padding-bottom: 4px; }
+    .hero.v3 .text-lead { color: rgba(255,255,255,0.88); }
+    .hero.v3 .hero-badge { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.22); color: #fff; backdrop-filter: blur(10px); }
+    .hero.v3 .hero-badge strong { color: #fff; }
+    .hero.v3 .hero-trust { border-top-color: rgba(255,255,255,0.20); }
+    .hero.v3 .hero-trust .trust-item strong { color: #fff; }
+    .hero.v3 .hero-trust .trust-item span { color: rgba(255,255,255,0.72); }
+    .hero.v3 .floating-card { background: rgba(255, 255, 255, 0.98); }
+    .hero.v3 .hero-visual img { box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+  </style>
+</head>
+<body style="background: #f1f5f9;">
+
+  <!-- ============================================================ -->
+  <!-- VARIANT 1: NAVY GRADIENT WITH GOLD ACCENTS                  -->
+  <!-- ============================================================ -->
+  <div class="variant-tag">
+    <span class="badge">Versión A</span>
+    Hero "Premium Navy" — gradiente azul profundo con acentos dorados
+    <span class="desc">Más corporativo, premium · texto blanco · alto contraste</span>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo"><img src="assets/img/logo.png" alt="Quintana Ruiz Asesores de Seguros" /></a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="coberturas.html">Coberturas</a></li>
+          <li><a href="companias.html">Compañías</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="contacto.html#cotizar" class="btn btn-primary">Cotizar ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero v1">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="stars" style="color:#FFB800;">★★★★★</span>
+          <span><strong>X.X</strong> en Google · reseñas reales</span>
+        </div>
+        <h1>Protegemos <span>lo que más</span> te importa</h1>
+        <p class="text-lead">Asesoramiento profesional a familias y empresas en seguros de auto, hogar, comercio, vida y flotas. Trabajamos con las mejores compañías del país.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary btn-lg">Cotizá tu seguro</a>
+          <a href="#" class="btn btn-outline btn-lg">Hablá por WhatsApp</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><strong>+XX</strong><span>años de trayectoria</span></div>
+          <div class="trust-item"><strong>+X.XXX</strong><span>clientes asegurados</span></div>
+          <div class="trust-item"><strong>+25</strong><span>compañías aseguradoras</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&auto=format&fit=crop" alt="Asesor reunido con cliente" />
+        <div class="floating-card card-1">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/></svg></div>
+          <div><strong>Cobertura garantizada</strong><span>las mejores compañías</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VARIANT 2: GEOMETRIC SHAPES                                  -->
+  <!-- ============================================================ -->
+  <div class="variant-tag">
+    <span class="badge">Versión B</span>
+    Hero "Modern Geometric" — formas geométricas + gradient suave
+    <span class="desc">Friendly, fintech, fresco · mantiene texto oscuro · agrega profundidad</span>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo"><img src="assets/img/logo.png" alt="Quintana Ruiz Asesores de Seguros" /></a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="coberturas.html">Coberturas</a></li>
+          <li><a href="companias.html">Compañías</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="contacto.html#cotizar" class="btn btn-primary">Cotizar ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero v2">
+    <div class="deco-grid"></div>
+    <div class="deco-blob"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="stars">★★★★★</span>
+          <span><strong>X.X</strong> en Google · reseñas reales</span>
+        </div>
+        <h1>Protegemos <span>lo que más</span> te importa</h1>
+        <p class="text-lead">Asesoramiento profesional a familias y empresas en seguros de auto, hogar, comercio, vida y flotas. Trabajamos con las mejores compañías del país.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary btn-lg">Cotizá tu seguro</a>
+          <a href="#" class="btn btn-whatsapp btn-lg">
+            <svg viewBox="0 0 32 32" fill="currentColor" style="width:18px;height:18px;"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.6 2.1 8L0 32l8.2-2.1C10.6 31.4 13.2 32 16 32c8.8 0 16-7.2 16-16S24.8 0 16 0z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><strong>+XX</strong><span>años de trayectoria</span></div>
+          <div class="trust-item"><strong>+X.XXX</strong><span>clientes asegurados</span></div>
+          <div class="trust-item"><strong>+25</strong><span>compañías aseguradoras</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&auto=format&fit=crop" alt="Asesor reunido con cliente" />
+        <div class="floating-card card-1">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/></svg></div>
+          <div><strong>Cobertura garantizada</strong><span>las mejores compañías</span></div>
+        </div>
+        <div class="floating-card card-2">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><strong>Respuesta en 24hs</strong><span>asesoramiento personalizado</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VARIANT 3: IMAGE BACKGROUND + OVERLAY                       -->
+  <!-- ============================================================ -->
+  <div class="variant-tag">
+    <span class="badge">Versión C</span>
+    Hero "Editorial Photo" — imagen de fondo con overlay azul
+    <span class="desc">Bold, magazine-style · más emocional · texto blanco · sin tarjeta lateral</span>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo"><img src="assets/img/logo.png" alt="Quintana Ruiz Asesores de Seguros" /></a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="coberturas.html">Coberturas</a></li>
+          <li><a href="companias.html">Compañías</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a href="contacto.html#cotizar" class="btn btn-primary">Cotizar ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero v3">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="stars" style="color:#FFB800;">★★★★★</span>
+          <span><strong>X.X</strong> en Google · reseñas reales</span>
+        </div>
+        <h1>Protegemos <span>lo que más</span> te importa</h1>
+        <p class="text-lead">Asesoramiento profesional a familias y empresas en seguros de auto, hogar, comercio, vida y flotas. Trabajamos con las mejores compañías del país para darte la cobertura justa al mejor precio.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary btn-lg">Cotizá tu seguro</a>
+          <a href="#" class="btn btn-whatsapp btn-lg">
+            <svg viewBox="0 0 32 32" fill="currentColor" style="width:18px;height:18px;"><path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.6 2.1 8L0 32l8.2-2.1C10.6 31.4 13.2 32 16 32c8.8 0 16-7.2 16-16S24.8 0 16 0z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><strong>+XX</strong><span>años de trayectoria</span></div>
+          <div class="trust-item"><strong>+X.XXX</strong><span>clientes asegurados</span></div>
+          <div class="trust-item"><strong>+25</strong><span>compañías aseguradoras</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&auto=format&fit=crop" alt="Asesor reunido con cliente" />
+        <div class="floating-card card-1">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/></svg></div>
+          <div><strong>Cobertura garantizada</strong><span>las mejores compañías</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom note -->
+  <div style="background:#0f172a;color:#cbd5e1;padding:40px 24px;text-align:center;font-family:Inter,sans-serif;">
+    <p style="max-width:640px;margin:0 auto;font-size:0.95rem;line-height:1.7;">
+      💬 <strong style="color:#fff;">¿Cuál te gusta?</strong> Decime A, B o C — o pedime ajustes (cambiar colores, intensidad del overlay, otra foto de fondo, etc.) y aplico la elegida al <code style="background:#1e293b;padding:2px 8px;border-radius:4px;">index.html</code> definitivo.
+    </p>
+  </div>
+
+</body>
+</html>
