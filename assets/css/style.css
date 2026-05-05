@@ -5,11 +5,21 @@
 /* ---------- Reset & Base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-img, svg, video { max-width: 100%; display: block; height: auto; }
+img, video { max-width: 100%; display: block; height: auto; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; border: none; background: none; }
 input, textarea, select { font: inherit; color: inherit; }
 ul { list-style: none; }
+
+/* SVG icon rendering — Safari & cross-browser fix */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  overflow: visible;
+  fill: currentColor;
+}
+svg[fill="none"] { fill: none; }
 
 /* ---------- Design Tokens ---------- */
 :root {
@@ -924,6 +934,9 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
 }
 
 @media (max-width: 768px) {
+  :root { --header-h: 88px; }
+  .site-logo img { height: 72px; }
+
   .site-nav { display: none; position: absolute; top: var(--header-h); left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px; gap: 0; border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-lg); align-items: stretch; }
   .site-nav.is-open { display: flex; }
   .site-nav > ul { flex-direction: column; gap: 0; width: 100%; }
@@ -977,20 +990,24 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
   .reviews-header { flex-direction: column; align-items: flex-start; gap: 18px; }
   .google-score { width: 100%; }
 
-  .site-logo img { height: 52px; }
+  :root { --header-h: 76px; }
+  .site-logo img { height: 60px; }
 
   .logo-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .logo-cell { height: 92px !important; font-size: 0.95rem !important; }
 }
 
 @media (max-width: 400px) {
-  .site-logo img { height: 44px; }
-  :root { --header-h: 72px; }
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.5rem; }
+  :root { --header-h: 66px; }
+  .site-logo img { height: 50px; }
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.4rem; }
   .hero-trust { gap: 14px; }
   .hero-trust .trust-item strong { font-size: 1.2rem; }
   .hero-trust .trust-item span { font-size: 0.75rem; }
+  .container { padding: 0 16px; }
+  .hero-trust { flex-wrap: wrap; }
+  .hero-trust .trust-item { flex: 1; min-width: 30%; }
 }
 
 /* ---------- Reveal on scroll ---------- */
