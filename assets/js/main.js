@@ -118,4 +118,47 @@
   document.querySelectorAll('[data-year]').forEach(el => {
     el.textContent = new Date().getFullYear();
   });
+
+  /* ---------- Promo Modal (25% OFF) ---------- */
+  const promoModal = document.getElementById('promo-modal');
+  if (promoModal) {
+    const STORAGE_KEY = 'qr-promo-shown-v1';
+    const SHOW_DELAY_MS = 1800;
+
+    const openModal = () => {
+      promoModal.hidden = false;
+      promoModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+    };
+
+    const closeModal = () => {
+      promoModal.hidden = true;
+      promoModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    // Don't show if already dismissed in this session
+    let alreadyShown = false;
+    try { alreadyShown = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+
+    if (!alreadyShown) {
+      setTimeout(openModal, SHOW_DELAY_MS);
+    }
+
+    // Close handlers
+    promoModal.querySelector('.promo-modal-close')?.addEventListener('click', closeModal);
+    promoModal.querySelector('.promo-modal-dismiss')?.addEventListener('click', closeModal);
+    promoModal.querySelector('.promo-modal-overlay')?.addEventListener('click', closeModal);
+
+    // ESC key closes
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !promoModal.hidden) closeModal();
+    });
+
+    // Click on CTA also closes (user is going to WhatsApp anyway)
+    promoModal.querySelector('.promo-modal-cta')?.addEventListener('click', () => {
+      setTimeout(closeModal, 200);
+    });
+  }
 })();
