@@ -819,7 +819,13 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
   font-size: 0.85rem; color: rgba(255,255,255,0.5);
 }
-.footer-bottom a { color: rgba(255,255,255,0.7); }
+.footer-bottom a { color: rgba(255,255,255,0.7); transition: color 0.2s; }
+.footer-bottom a:hover { color: #fff; }
+.footer-bottom .credit-link {
+  color: #FFB800;
+  font-weight: 600;
+}
+.footer-bottom .credit-link:hover { color: #FFD24D; text-decoration: underline; }
 
 /* ---------- Page Headers (interior pages) ---------- */
 .page-header {
