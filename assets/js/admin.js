@@ -7,7 +7,20 @@ const SUPABASE_URL = 'https://imovmcyiegrgwhxibcjf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imltb3ZtY3lpZWdyZ3doeGliY2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MDk1NTYsImV4cCI6MjA5MjQ4NTU1Nn0.Bnr_IF6xOHfRXi0lUmoBDlKBWUaUhaUdeP_BgjZhokY';
 const STORAGE_BUCKET = 'qr-blog-images';
 
+console.log('[admin] script loaded, checking Supabase SDK...');
+
+// Check Supabase SDK loaded
+if (!window.supabase || !window.supabase.createClient) {
+  const errorEl = document.getElementById('login-error');
+  if (errorEl) {
+    errorEl.innerHTML = '⚠️ El SDK de Supabase no se pudo cargar.<br>Probable causa: estás abriendo el archivo con doble click (file://) en vez de un servidor. <br><br>Solución: deployalo en Netlify/Vercel o probalo en localhost (no por file://).';
+    errorEl.hidden = false;
+  }
+  throw new Error('Supabase SDK not loaded');
+}
+
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+console.log('[admin] Supabase client created OK');
 
 let quill;            // Quill editor instance
 let editingPostId;    // Currently editing post ID
