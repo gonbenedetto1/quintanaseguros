@@ -57,7 +57,19 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   btn.textContent = 'Iniciar sesión';
 
   if (error) {
-    errorEl.textContent = 'Email o contraseña incorrectos.';
+    console.error('[login] Supabase error:', error);
+    let msg = 'Error: ' + (error.message || 'No se pudo iniciar sesión');
+    // Mensajes amigables para los errores más comunes
+    if (/invalid login credentials/i.test(error.message)) {
+      msg = 'Email o contraseña incorrectos.';
+    } else if (/email not confirmed/i.test(error.message)) {
+      msg = 'El email no está confirmado. Pedile a Pragma que active "Auto Confirm User" en Supabase.';
+    } else if (/email signups are disabled/i.test(error.message)) {
+      msg = 'El registro está deshabilitado. Si sos admin pedile a Pragma que cree tu usuario manualmente.';
+    } else if (/network|fetch/i.test(error.message)) {
+      msg = 'Error de conexión. Revisá tu internet o si Supabase está caído.';
+    }
+    errorEl.textContent = msg;
     errorEl.hidden = false;
     return;
   }
