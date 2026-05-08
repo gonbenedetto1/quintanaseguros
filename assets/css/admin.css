@@ -16,6 +16,9 @@ a { color: #1E5BBF; text-decoration: none; }
 button { font: inherit; cursor: pointer; border: 0; background: none; }
 input, textarea, select { font: inherit; color: inherit; }
 
+/* CRITICAL: forzar el atributo hidden a ganarle a display: flex/grid */
+[hidden] { display: none !important; }
+
 :root {
   --primary: #1E5BBF;
   --primary-dark: #154A9F;
