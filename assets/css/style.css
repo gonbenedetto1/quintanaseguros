@@ -475,6 +475,17 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 28px;
 }
+/* Variante para 2 miembros (home + nosotros) */
+.team-grid.team-grid-pair {
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+}
+@media (max-width: 640px) {
+  .team-grid.team-grid-pair {
+    grid-template-columns: minmax(0, 380px);
+    justify-content: center;
+  }
+}
 .team-card {
   background: #fff;
   border-radius: var(--radius-xl);
