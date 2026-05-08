@@ -23,7 +23,7 @@ Este documento es para vos (Pragma Studio). Pasos para dejar funcionando el admi
 
 1. Menú izquierdo → **Storage**
 2. Click en **+ New bucket**
-3. Nombre: `blog-images`
+3. Nombre: `qr-blog-images`
 4. **Public bucket: ✅ ON** (importante, sino las imágenes no cargan en el sitio público)
 5. **File size limit:** 5 MB (suficiente)
 6. Allowed MIME types: dejar `image/*`
@@ -35,21 +35,21 @@ Volviendo al **SQL Editor**, ejecutá esto:
 
 ```sql
 -- Permitir que cualquiera vea las imágenes (son públicas)
-CREATE POLICY "blog_images_read_public"
+CREATE POLICY "qr_blog_images_read_public"
 ON storage.objects FOR SELECT
-USING (bucket_id = 'blog-images');
+USING (bucket_id = 'qr-blog-images');
 
 -- Solo usuarios autenticados pueden subir
-CREATE POLICY "blog_images_insert_auth"
+CREATE POLICY "qr_blog_images_insert_auth"
 ON storage.objects FOR INSERT
 TO authenticated
-WITH CHECK (bucket_id = 'blog-images');
+WITH CHECK (bucket_id = 'qr-blog-images');
 
 -- Solo autenticados pueden borrar
-CREATE POLICY "blog_images_delete_auth"
+CREATE POLICY "qr_blog_images_delete_auth"
 ON storage.objects FOR DELETE
 TO authenticated
-USING (bucket_id = 'blog-images');
+USING (bucket_id = 'qr-blog-images');
 ```
 
 ### 4️⃣ Crear el usuario admin

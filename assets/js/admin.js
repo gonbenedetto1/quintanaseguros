@@ -5,7 +5,7 @@
 
 const SUPABASE_URL = 'https://imovmcyiegrgwhxibcjf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imltb3ZtY3lpZWdyZ3doeGliY2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MDk1NTYsImV4cCI6MjA5MjQ4NTU1Nn0.Bnr_IF6xOHfRXi0lUmoBDlKBWUaUhaUdeP_BgjZhokY';
-const STORAGE_BUCKET = 'blog-images';
+const STORAGE_BUCKET = 'qr-blog-images';
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -88,7 +88,7 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
    ========================================================= */
 
 async function loadSettings() {
-  const { data, error } = await sb.from('settings').select('*').eq('id', 1).single();
+  const { data, error } = await sb.from('qr_settings').select('*').eq('id', 1).single();
   if (error) {
     console.error('load settings:', error);
     return;
@@ -115,7 +115,7 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
 
   btn.disabled = true; btn.textContent = 'Guardando…';
 
-  const { error } = await sb.from('settings').update(updates).eq('id', 1);
+  const { error } = await sb.from('qr_settings').update(updates).eq('id', 1);
 
   btn.disabled = false; btn.textContent = 'Guardar cambios';
 
@@ -138,7 +138,7 @@ async function loadPosts() {
   const listEl = document.getElementById('posts-list');
   listEl.innerHTML = '<div class="empty-state">Cargando…</div>';
 
-  const { data, error } = await sb.from('posts').select('*').order('created_at', { ascending: false });
+  const { data, error } = await sb.from('qr_posts').select('*').order('created_at', { ascending: false });
   if (error) { listEl.innerHTML = `<div class="empty-state">Error: ${error.message}</div>`; return; }
 
   if (!data.length) {
@@ -213,7 +213,7 @@ async function openEditor(id) {
   }
 
   // Edit existing
-  const { data, error } = await sb.from('posts').select('*').eq('id', id).single();
+  const { data, error } = await sb.from('qr_posts').select('*').eq('id', id).single();
   if (error) { alert('Error: ' + error.message); return; }
 
   editingPostId = id;
@@ -292,9 +292,9 @@ document.getElementById('post-form').addEventListener('submit', async (e) => {
 
   let result;
   if (editingPostId) {
-    result = await sb.from('posts').update(post).eq('id', editingPostId);
+    result = await sb.from('qr_posts').update(post).eq('id', editingPostId);
   } else {
-    result = await sb.from('posts').insert(post);
+    result = await sb.from('qr_posts').insert(post);
   }
 
   btn.disabled = false; btn.textContent = 'Guardar';
@@ -320,7 +320,7 @@ document.getElementById('delete-post-btn').addEventListener('click', async () =>
   if (!editingPostId) return;
   if (!confirm('¿Seguro querés eliminar esta nota? Esta acción no se puede deshacer.')) return;
 
-  const { error } = await sb.from('posts').delete().eq('id', editingPostId);
+  const { error } = await sb.from('qr_posts').delete().eq('id', editingPostId);
   if (error) { alert('Error: ' + error.message); return; }
   document.getElementById('back-to-list').click();
 });
@@ -333,7 +333,7 @@ async function loadSubmissions() {
   const listEl = document.getElementById('submissions-list');
   listEl.innerHTML = '<div class="empty-state">Cargando…</div>';
 
-  const { data, error } = await sb.from('submissions').select('*').order('created_at', { ascending: false }).limit(100);
+  const { data, error } = await sb.from('qr_submissions').select('*').order('created_at', { ascending: false }).limit(100);
   if (error) { listEl.innerHTML = `<div class="empty-state">Error: ${error.message}</div>`; return; }
 
   if (!data.length) {

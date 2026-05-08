@@ -8,7 +8,7 @@
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imltb3ZtY3lpZWdyZ3doeGliY2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MDk1NTYsImV4cCI6MjA5MjQ4NTU1Nn0.Bnr_IF6xOHfRXi0lUmoBDlKBWUaUhaUdeP_BgjZhokY';
 
   // Cache settings 60s en sessionStorage para no martillar la API
-  const CACHE_KEY = 'qr-settings';
+  const CACHE_KEY = 'qr-settings-cache';
   const CACHE_TTL_MS = 60_000;
 
   async function fetchSettings() {
@@ -22,7 +22,7 @@
     } catch (e) {}
 
     try {
-      const res = await fetch(`${SUPABASE_URL}/settings?id=eq.1&select=*`, {
+      const res = await fetch(`${SUPABASE_URL}/qr_settings?id=eq.1&select=*`, {
         headers: {
           apikey: SUPABASE_ANON,
           Authorization: `Bearer ${SUPABASE_ANON}`
@@ -132,7 +132,7 @@
         const formType = form.dataset.form || 'unknown';
         // Disparamos el insert pero no bloqueamos el flow del form
         try {
-          fetch(`${SUPABASE_URL}/submissions`, {
+          fetch(`${SUPABASE_URL}/qr_submissions`, {
             method: 'POST',
             headers: {
               apikey: SUPABASE_ANON,
