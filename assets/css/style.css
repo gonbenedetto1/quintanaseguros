@@ -612,8 +612,14 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
 /* ---------- Blog ---------- */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+}
+@media (max-width: 960px) {
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .blog-grid { grid-template-columns: 1fr; }
 }
 .blog-card {
   background: #fff;
