@@ -624,8 +624,11 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
   transition: all 0.3s;
 }
 .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.blog-card a:has(.blog-card-img) { display: block; }
 .blog-card-img {
-  aspect-ratio: 16/10;
+  width: 100%;
+  height: 220px;
+  display: block;
   object-fit: cover;
   background: var(--color-bg-soft);
 }
@@ -1139,9 +1142,19 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
 .article .meta { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 32px; display: flex; gap: 16px; flex-wrap: wrap; }
 .article img.featured {
   width: 100%;
+  max-height: 420px;
   border-radius: var(--radius-lg);
-  aspect-ratio: 16/9; object-fit: cover;
+  aspect-ratio: 16/9;
+  object-fit: cover;
   margin-bottom: 32px;
+  display: block;
+}
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: 16px 0;
+  display: block;
 }
 .article-body h2 { margin: 40px 0 16px; font-size: 1.7rem; }
 .article-body h3 { margin: 32px 0 14px; font-size: 1.25rem; }

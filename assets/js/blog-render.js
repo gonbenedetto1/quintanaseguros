@@ -4,8 +4,15 @@
    ========================================================= */
 
 (async function () {
-  const grid = document.getElementById('blog-grid');
+  // Soporta dos casos:
+  //   #blog-grid       → listado completo (página /blog.html)
+  //   #home-blog-grid  → preview de las últimas 3 notas (home)
+  const fullGrid = document.getElementById('blog-grid');
+  const homeGrid = document.getElementById('home-blog-grid');
+  const grid = fullGrid || homeGrid;
   if (!grid) return;
+  const isHome = !!homeGrid;
+  const limit = isHome ? 3 : 100;
 
   const SUPABASE_URL = 'https://imovmcyiegrgwhxibcjf.supabase.co/rest/v1';
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imltb3ZtY3lpZWdyZ3doeGliY2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MDk1NTYsImV4cCI6MjA5MjQ4NTU1Nn0.Bnr_IF6xOHfRXi0lUmoBDlKBWUaUhaUdeP_BgjZhokY';
@@ -22,7 +29,7 @@
 
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/qr_posts?published=eq.true&order=published_at.desc.nullslast,created_at.desc&select=id,slug,title,excerpt,category,cover_image,read_minutes,published_at,created_at`,
+      `${SUPABASE_URL}/qr_posts?published=eq.true&order=published_at.desc.nullslast,created_at.desc&limit=${limit}&select=id,slug,title,excerpt,category,cover_image,read_minutes,published_at,created_at`,
       {
         headers: {
           apikey: SUPABASE_ANON,
@@ -34,11 +41,17 @@
     const posts = await res.json();
 
     if (!posts.length) {
-      grid.innerHTML = `
-        <div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 80px 20px; color: var(--color-text-muted); background: var(--color-bg-soft); border-radius: var(--radius-lg);">
-          <p style="font-size: 1.1rem; margin-bottom: 8px;">📝 Próximamente notas en el blog.</p>
-          <p style="font-size: 0.92rem;">Estamos preparando contenido útil sobre seguros para vos.</p>
-        </div>`;
+      if (isHome) {
+        // En el home, ocultar toda la sección si no hay notas
+        const section = grid.closest('section');
+        if (section) section.style.display = 'none';
+      } else {
+        grid.innerHTML = `
+          <div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 80px 20px; color: var(--color-text-muted); background: var(--color-bg-soft); border-radius: var(--radius-lg);">
+            <p style="font-size: 1.1rem; margin-bottom: 8px;">📝 Próximamente notas en el blog.</p>
+            <p style="font-size: 0.92rem;">Estamos preparando contenido útil sobre seguros para vos.</p>
+          </div>`;
+      }
       return;
     }
 
