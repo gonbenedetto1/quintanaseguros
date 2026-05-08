@@ -57,7 +57,7 @@
     const descMeta = document.querySelector('meta[name="description"]');
     if (descMeta && post.excerpt) descMeta.setAttribute('content', post.excerpt);
     const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.setAttribute('href', `https://quintanaruiz.com.ar/post.html?slug=${encodeURIComponent(post.slug)}`);
+    if (canonical) canonical.setAttribute('href', `https://seguroscordoba.com.ar/post.html?slug=${encodeURIComponent(post.slug)}`);
 
     // Schema.org BlogPosting JSON-LD
     const schemaScript = document.createElement('script');
@@ -73,7 +73,7 @@
       publisher: {
         '@type': 'Organization',
         name: 'Quintana Ruiz Asesores de Seguros',
-        logo: { '@type': 'ImageObject', url: 'https://quintanaruiz.com.ar/assets/img/logo.png' }
+        logo: { '@type': 'ImageObject', url: 'https://seguroscordoba.com.ar/assets/img/logo.png' }
       }
     });
     document.head.appendChild(schemaScript);
