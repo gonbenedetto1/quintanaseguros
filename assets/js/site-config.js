@@ -4,8 +4,8 @@
    ========================================================= */
 
 (function () {
-  const SUPABASE_URL = 'https://imovmcyiegrgwhxibcjf.supabase.co/rest/v1';
-  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imltb3ZtY3lpZWdyZ3doeGliY2pmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MDk1NTYsImV4cCI6MjA5MjQ4NTU1Nn0.Bnr_IF6xOHfRXi0lUmoBDlKBWUaUhaUdeP_BgjZhokY';
+  const SUPABASE_URL = 'https://wioidjmgxlldmmampqnz.supabase.co/rest/v1';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indpb2lkam1neGxsZG1tYW1wcW56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwOTM0MTcsImV4cCI6MjA5NjY2OTQxN30.p7NuK3GZbqXG-NNDkjGw1ERaKsO8gs3RKnIr4Nn7LVc';
 
   // Cache settings 60s en sessionStorage para no martillar la API
   const CACHE_KEY = 'qr-settings-cache';
